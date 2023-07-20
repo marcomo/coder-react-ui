@@ -1,35 +1,25 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppBar from './AppBar';
-import { NavMenu } from '../@types/nav';
+import { NavMenu, NavItem } from '../@types/nav';
+import Workspaces from './Workspaces';
+import Templates from './Templates';
 
-const navMenu: NavMenu = [
-  {
-    label: "Workspaces",
-    value: "workspaces",
-    path: "/workspaces",
-  },
-  {
-    label: "Templates",
-    value: "templates",
-    path: "/templates"
-  },
-  {
-    label: "Users",
-    value: "users",
-    path: "/users"
-  },
-  {
-    label: "Audit",
-    value: "audit",
-    path: "/audit"
-  },
-  {
-    label: "Deployment",
-    value: "deployment",
-    path: "/deployment/general"
+const navMenu: NavMenu = Object.keys(NavItem).map((item) => {
+  return {
+    label: item[0].toUpperCase() + item.slice(1),
+    value: NavItem[item as NavItem],
+    path: `/${item}`,
   }
-]
+})
+
+const Components: {[key: string]: React.ComponentType} = {
+  [NavItem.deployment]: () => <div>deployment</div>,
+  [NavItem.users]: () => <div>users</div>,
+  [NavItem.audit]: () => <div>audit</div>,
+  [NavItem.workspaces]: Workspaces,
+  [NavItem.templates]: Templates,
+}
 
 function App() {
   return (
@@ -38,7 +28,7 @@ function App() {
       <Routes>
         {
           navMenu.map((item) => (
-            <Route key={item.path} path={item.path} Component={() => <div>{item.label}</div>  } />
+            <Route key={item.path} path={item.path} Component={Components[item.value]} />
           ))
         }
       </Routes>
