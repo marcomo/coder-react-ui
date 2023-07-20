@@ -1,12 +1,13 @@
 import React from 'react';
 import Router from './components/Router';
 import './App.scss';
+import { Container } from '@mui/material';
 
 const App: React.FunctionComponent = () => {
   return (
-    <div className="App">
+    <Container disableGutters className="App">
       <Router />
-    </div>
+    </Container>
   );
 }
 

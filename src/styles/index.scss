@@ -12,14 +12,15 @@
     --color-paper-100: #{p.$color-neutral-600};
     --color-paper-200: #{p.$color-neutral-500};
     --color-paper-300: #{p.$color-neutral-400};
+    --color-paper-400: #{p.$color-neutral-300};
     --color-ink-100: #{p.$color-neutral-100};
     --color-ink-200: #{p.$color-neutral-200};
     --color-emphasis: #{vars.$color-emphasis};
     --border-100: 1px solid #{p.$color-neutral-400};
   }
 
-  .app {
-    display: flex;
+  html, body, #root {
+    width: 100%;
     height: 100%;
   }
   

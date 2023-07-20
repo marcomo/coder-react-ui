@@ -13,7 +13,7 @@ const navMenu: NavMenu = Object.keys(NavItem).map((item) => {
   }
 })
 
-const Components: {[key: string]: React.ComponentType} = {
+const Components: { [key: string]: React.ComponentType } = {
   [NavItem.deployment]: () => <div>deployment</div>,
   [NavItem.users]: () => <div>users</div>,
   [NavItem.audit]: () => <div>audit</div>,
