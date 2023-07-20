@@ -10,8 +10,12 @@
   :root {
     --fontSize-base: #{vars.$size-base};
     --color-paper-100: #{p.$color-neutral-600};
+    --color-paper-200: #{p.$color-neutral-500};
+    --color-paper-300: #{p.$color-neutral-400};
     --color-ink-100: #{p.$color-neutral-100};
+    --color-ink-200: #{p.$color-neutral-200};
     --color-emphasis: #{vars.$color-emphasis};
+    --border-100: 1px solid #{p.$color-neutral-400};
   }
 
   .app {
