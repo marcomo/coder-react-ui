@@ -1,0 +1,38 @@
+@use "sass:meta";
+@use "variables" as vars;
+@use "primitives" as p;
+
+@layer reset {
+  @include meta.load-css('reset');
+}
+
+@layer app {
+  :root {
+    --fontSize-base: #{vars.$size-base};
+    --color-paper-100: #{p.$color-neutral-600};
+    --color-ink-100: #{p.$color-neutral-100};
+    --color-emphasis: #{vars.$color-emphasis};
+  }
+
+  .app {
+    display: flex;
+    height: 100%;
+  }
+  
+  body {
+    color: var(--color-ink-100);
+    background-color: var(--color-paper-100);
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fontSize-base);
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+}
+

@@ -1,0 +1,11 @@
+@use "primitives" as p;
+
+$size-base: p.$size-base;
+$size-xs: .25rem;
+$size-sm: .5rem;
+$size-md: 1rem;
+$size-lg: 2rem;
+$size-xl: 4rem;
+$size-xxl: 6rem;
+$size-aside-left: 17rem;
+$color-emphasis: p.$color-blue;
