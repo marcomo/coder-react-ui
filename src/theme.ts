@@ -36,10 +36,10 @@ const theme = extendTheme({
           marginTop: 0,
           marginBottom: 0,
           borderRadius: 0,
-          "&:hover": {
+          "&.active, &:hover": {
             backgroundColor: "var(--color-paper-300)",
             color: theme.colorSchemes.dark.palette.neutral.light,
-          }
+          },
         }),
       },
     },
