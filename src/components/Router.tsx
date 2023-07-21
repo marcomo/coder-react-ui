@@ -5,13 +5,16 @@ import { NavMenu, NavItem } from '../@types/nav';
 import Workspaces from './Workspaces';
 import Templates from './Templates';
 
-const navMenu: NavMenu = Object.keys(NavItem).map((item) => {
+export const navMenu: NavMenu = Object.keys(NavItem).reduce<NavMenu>((prev, item) => {
   return {
-    label: item[0].toUpperCase() + item.slice(1),
-    value: NavItem[item as NavItem],
-    path: `/${item}`,
+    ...prev,
+    [item]: {
+      label: item[0].toUpperCase() + item.slice(1),
+      value: NavItem[item as NavItem],
+      path: `/${item}`,
+    }
   }
-})
+}, {} as NavMenu)
 
 const Components: { [key: string]: React.ComponentType } = {
   [NavItem.deployment]: () => <div>deployment</div>,
@@ -27,7 +30,7 @@ function App() {
       <AppBar navMenu={navMenu} />
       <Routes>
         {
-          navMenu.map((item) => (
+          Object.values(navMenu).map((item) => (
             <Route key={item.path} path={item.path} Component={Components[item.value]} />
           ))
         }

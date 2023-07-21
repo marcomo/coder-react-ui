@@ -13,7 +13,7 @@ const AppBar: React.FunctionComponent<{ navMenu: NavMenu }> = (props) => {
       <Toolbar disableGutters>
         <CoderIcon />
         <Box display="flex">
-          {props.navMenu.map((item) => (
+          {Object.values(props.navMenu).map((item) => (
             <Button variant='contained' key={item.path} to={item.path} component={NavLink}>
               {item.label}
             </Button>

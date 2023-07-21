@@ -33,6 +33,9 @@ const theme = extendTheme({
         text: {
           primary: "var(--color-ink-100)",
           secondary: "var(--color-ink-200)"
+        },
+        Button: {
+          inheritContainedBg: "var(--color-emphasis)"
         }
       }
     }
@@ -46,7 +49,8 @@ const theme = extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           textTransform: "none",
-          color: theme.colorSchemes.dark.palette.neutral.main,
+          color: theme.colorSchemes.dark.palette.text.primary,
+          backgroundColor: theme.colorSchemes.dark.palette.Button.inheritContainedBg,
           fontWeight: 400,
           fontSize: "1rem",
           height: "4rem",
@@ -56,6 +60,8 @@ const theme = extendTheme({
           marginTop: 0,
           marginBottom: 0,
           borderRadius: 0,
+          color: theme.colorSchemes.dark.palette.neutral.main,
+          backgroundColor: "transparent",
           "&.active, &:hover": {
             backgroundColor: "var(--color-paper-300)",
             color: theme.colorSchemes.dark.palette.neutral.light,
@@ -67,6 +73,14 @@ const theme = extendTheme({
       defaultProps: {
         underline: "none",
       },
+      styleOverrides: {
+        root: {
+          color: "var(--color-emphasis)",
+          "&:hover": {
+            textDecoration: "underline"
+          }
+        }
+      }
     },
     MuiAppBar: {
       styleOverrides: {

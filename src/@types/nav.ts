@@ -7,7 +7,9 @@ export enum NavItem {
 
 }
 export type NavMenu = {
-  value: NavItem
-  label: string
-  path: string
-}[]
+  [key in NavItem]: {
+    value: NavItem
+    label: string
+    path: string
+  }
+}
