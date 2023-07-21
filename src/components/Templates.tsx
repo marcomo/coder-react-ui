@@ -1,9 +1,9 @@
 import React from 'react';
-import { Template } from '../@types/template';
 import TemplatesTable from './TemplatesTable';
 import ContentHeader from './ContentHeader';
 import PageContentLayout from './PageContentLayout';
 import { Box } from '@mui/material';
+import NoScrollBox from './NoScrollBox';
 
 const Templates: React.FunctionComponent = () => {
   return (
@@ -14,9 +14,9 @@ const Templates: React.FunctionComponent = () => {
           secondaryText='Select a template to create a workspace.'
         />
       </Box>
-      <Box>
+      <NoScrollBox>
         <TemplatesTable handleRowClick={() => {}} />
-      </Box>
+      </NoScrollBox>
     </PageContentLayout>
   )
 }
