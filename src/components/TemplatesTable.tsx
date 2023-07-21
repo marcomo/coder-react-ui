@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,13 +10,19 @@ import Avatar from '@mui/material/Avatar';
 import dayjs from 'dayjs';
 import relativeTime from "dayjs/plugin/relativeTime"
 import Box from '@mui/material/Box';
-import { Template } from '../@types/template';
+import { useTemplates } from '../context/TemplatesContext';
 dayjs.extend(relativeTime)
 
-const TemplatesTable: React.FunctionComponent<{templates: Template[]}> = (props) => {
+type Props = {
+  handleRowClick(id: string): void
+  selectedID?: string
+}
+
+const TemplatesTable: React.FunctionComponent<Props> = (props) => {
+  const templates = useTemplates()
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table stickyHeader>
         <TableHead
           sx={{
             '& th:first-child': { paddingLeft: "2rem" },
@@ -32,9 +38,11 @@ const TemplatesTable: React.FunctionComponent<{templates: Template[]}> = (props)
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.templates.map((template) => (
+          {templates.map((template) => (
             <TableRow
+              selected={props.selectedID == template.id}
               key={template.name}
+              onClick={() => props.handleRowClick(template.id)}
               sx={{
                 '& th:first-child': { paddingLeft: "2rem" },
                 '& td:last-child': { paddingRight: "2rem" },

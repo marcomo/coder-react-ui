@@ -53,7 +53,6 @@ const theme = extendTheme({
           backgroundColor: theme.colorSchemes.dark.palette.Button.inheritContainedBg,
           fontWeight: 400,
           fontSize: "1rem",
-          height: "4rem",
           display: "flex",
         }),
         containedNeutral: ({ theme }) => ({

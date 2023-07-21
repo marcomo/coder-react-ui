@@ -5,12 +5,6 @@ import ContentHeader from './ContentHeader';
 import PageContentLayout from './PageContentLayout';
 import { Box } from '@mui/material';
 
-const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
-  name: `docker-code-server-${idx < 10 ? "0" + idx : idx}`,
-  usedBy: 2,
-  buildTime: 20,
-  lastUpdated: 1689379200
-}))
 const Templates: React.FunctionComponent = () => {
   return (
     <PageContentLayout>
@@ -20,7 +14,9 @@ const Templates: React.FunctionComponent = () => {
           secondaryText='Select a template to create a workspace.'
         />
       </Box>
-      <TemplatesTable templates={templates} />
+      <Box>
+        <TemplatesTable handleRowClick={() => {}} />
+      </Box>
     </PageContentLayout>
   )
 }

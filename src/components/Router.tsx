@@ -1,9 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppBar from './AppBar';
 import { NavMenu, NavItem } from '../@types/nav';
 import Workspaces from './Workspaces';
 import Templates from './Templates';
+import { TemplatesProvider } from '../context/TemplatesContext';
 
 export const navMenu: NavMenu = Object.keys(NavItem).reduce<NavMenu>((prev, item) => {
   return {
@@ -24,18 +25,20 @@ const Components: { [key: string]: React.ComponentType } = {
   [NavItem.templates]: Templates,
 }
 
-function App() {
+function Router() {
   return (
-    <Router>
-      <AppBar navMenu={navMenu} />
-      <Routes>
-        {
-          Object.values(navMenu).map((item) => (
-            <Route key={item.path} path={item.path} Component={Components[item.value]} />
-          ))
-        }
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <TemplatesProvider>
+        <AppBar navMenu={navMenu} />
+        <Routes>
+          {
+            Object.values(navMenu).map((item) => (
+              <Route key={item.path} path={item.path} Component={Components[item.value]} />
+              ))
+            }
+        </Routes>
+      </TemplatesProvider>
+    </BrowserRouter>
   );
 }
-export default App;
+export default Router;
