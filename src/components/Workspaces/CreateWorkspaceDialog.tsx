@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, useColorScheme } from '@mui/material';
+import React from 'react';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import ScopedColorScheme from '../ScopedColorScheme';
-import CreateWorkspaceTemplateStep from "./CreateWorkspaceTemplateStep";
+import { CreateWorkspace } from ".";
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
 const CreateWorkspaceDialog: React.FunctionComponent = () => {
@@ -16,13 +16,9 @@ const CreateWorkspaceDialog: React.FunctionComponent = () => {
       <ScopedColorScheme>
         <DialogTitle>Create a Workspace</DialogTitle>
         <DialogContent>
-          {
-            wizardStep === 1
-              ? <CreateWorkspaceTemplateStep />
-              : wizardStep === 2
-                ? <div>Wizard Step 2</div>
-                : <div>Wizard Step 3</div>
-          }
+          {wizardStep === 1 ? <CreateWorkspace.TemplateStep /> : null}
+          {wizardStep === 2 ? <div>Wizard Step 2</div> : null}
+          {wizardStep === 3 ? <div>Wizard Step 3</div> : null}
         </DialogContent>
         <DialogActions>
           <Button variant="outlined" size="medium" onClick={() => { setDialogOpen(false); setSelectedTemplate(undefined) }}>
