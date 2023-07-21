@@ -5,7 +5,14 @@ import { Container } from '@mui/material';
 
 const App: React.FunctionComponent = () => {
   return (
-    <Container disableGutters className="App">
+    /**
+     * In dev, data-mui-color-scheme="dark" is set here as a backup
+     * to defaultMode in App. This should NOT be used in production as the
+     * user would not be able to get out of dark mode. It is only including
+     * here should any dev running this code might have mode set in
+     * localStorage resulting in unwanted (incomplete) light-mode theme.
+     */
+    <Container disableGutters className="App" data-mui-color-scheme="dark">
       <Router />
     </Container>
   );

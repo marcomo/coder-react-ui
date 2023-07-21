@@ -8,7 +8,12 @@ import './styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssVarsProvider theme={theme}>
+    {/**
+     * defaultMode sets the 'mui-mode' in localStorage and adds the data attr to the HTML tag.
+     * But in dev, it doesn't reset the localStorage if it's changed here.
+     * As a backup the data attr is also used in App.
+    */}
+    <CssVarsProvider theme={theme} defaultMode='dark'>
       <App />
      </CssVarsProvider>
   </React.StrictMode>,
