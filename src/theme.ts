@@ -18,9 +18,16 @@ const theme = extendTheme({
     },
   },
   spacing: 16,
+  shape: {
+    borderRadius: 4
+  },
   colorSchemes: {
     dark: {
       palette: {
+        action: {
+          active: "var(--color-emphasis)",
+          activatedOpacity: .7
+        },
         neutral: {
           light: "var(--color-ink-100)",
           main: "var(--color-ink-200)"
@@ -30,12 +37,18 @@ const theme = extendTheme({
           paper: "var(--color-paper-200)",
           paperLight: "var(--color-paper-300)",
         },
+        border: {
+          main: "var(--border-100)"
+        },
         text: {
           primary: "var(--color-ink-100)",
           secondary: "var(--color-ink-200)"
         },
         Button: {
           inheritContainedBg: "var(--color-emphasis)"
+        },
+        AppBar: {
+          defaultBg: "var(--color-paper-200)",
         }
       }
     }
@@ -43,27 +56,30 @@ const theme = extendTheme({
   components: {
     MuiButton: {
       defaultProps: {
-        variant: "outlined",
-        color: "neutral"
+        variant: "outlined"
       },
       styleOverrides: {
         root: ({ theme }) => ({
           textTransform: "none",
-          color: theme.colorSchemes.dark.palette.text.primary,
-          backgroundColor: theme.colorSchemes.dark.palette.Button.inheritContainedBg,
+          color: theme.vars.palette.text.primary,
+          borderRadius: theme.vars.shape.borderRadius,
+          borderColor: theme.vars.palette.neutral.main,
           fontWeight: 400,
           fontSize: "1rem",
           display: "flex",
+        }),
+        contained: ({ theme }) => ({
+          backgroundColor: theme.vars.palette.Button.inheritContainedBg,
         }),
         containedNeutral: ({ theme }) => ({
           marginTop: 0,
           marginBottom: 0,
           borderRadius: 0,
-          color: theme.colorSchemes.dark.palette.neutral.main,
+          color: theme.vars.palette.neutral.main,
           backgroundColor: "transparent",
           "&.active, &:hover": {
-            backgroundColor: "var(--color-paper-300)",
-            color: theme.colorSchemes.dark.palette.neutral.light,
+            backgroundColor: theme.vars.palette.background.paperLight,
+            color: theme.vars.palette.neutral.light,
           },
         }),
       },
@@ -73,29 +89,28 @@ const theme = extendTheme({
         underline: "none",
       },
       styleOverrides: {
-        root: {
-          color: "var(--color-emphasis)",
+        root: ({ theme }) => ({
+          color: theme.vars.palette.action.active,
           "&:hover": {
             textDecoration: "underline"
           }
-        }
+        })
       }
     },
     MuiAppBar: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           spacing: 0,
-          backgroundColor: 'var(--color-paper-200)',
-          borderBottom: 'var(--border-100)'
-        }
+          borderBottom: theme.vars.palette.border.main
+        })
       }
     },
     MuiTableContainer: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           borderRadius: "0.5rem",
-          border: "var(--border-100)",
-        },
+          border: theme.vars.palette.border.main
+        }),
       },
     },
     MuiTable: {
@@ -103,19 +118,8 @@ const theme = extendTheme({
         root: ({ theme }) => ({
           borderCollapse: "unset",
           border: "none",
-          background: theme.colorSchemes.dark.palette.background.paper,
-          boxShadow: `0 0 0 1px ${theme.colorSchemes.dark.palette.background.default} inset`,
-          overflow: "hidden",
-
-          "& td": {
-            paddingTop: 16,
-            paddingBottom: 16,
-            background: "transparent",
-          },
-
-          [theme.breakpoints.down("md")]: {
-            minWidth: 1000,
-          },
+          background: theme.vars.palette.background.paper,
+          boxShadow: `0 0 0 1px ${theme.vars.palette.background.default} inset`,
         }),
       },
     },
@@ -123,27 +127,34 @@ const theme = extendTheme({
       styleOverrides: {
         head: ({ theme }) => ({
           fontSize: 14,
-          color: theme.colorSchemes.dark.palette.text.secondary,
-          fontWeight: 600,
-          background: theme.colorSchemes.dark.palette.background.paperLight,
+          background: theme.vars.palette.background.paperLight,
+          color: theme.vars.palette.text.secondary,
+          fontWeight: 600
         }),
         root: ({ theme }) => ({
           fontSize: 16,
-          color: theme.colorSchemes.dark.palette.text.secondary,
-          background: theme.colorSchemes.dark.palette.background.paper,
-          borderBottom: "var(--border-100)",
+          color: theme.vars.palette.text.secondary,
+          borderBottom: theme.vars.palette.border.main,
           padding: "0.75rem 0.5rem",
         }),
       },
     },
     MuiTableRow: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.vars.palette.background.paper,
           "&:last-child .MuiTableCell-body": {
             borderBottom: 0,
           },
-        },
-      },
+          "&.Mui-selected .MuiTableCell-body": {
+            color: theme.vars.palette.text.primary,
+            backgroundColor: theme.vars.palette.action.active
+          },
+          "&.MuiTableRow-hover:hover": {
+            backgroundColor: theme.vars.palette.background.default,
+          }
+        }),
+      }
     },
     MuiContainer: {
       defaultProps: {
@@ -153,8 +164,16 @@ const theme = extendTheme({
     MuiAvatar: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color: theme.colorSchemes.dark.palette.background.paper,
-          backgroundColor: theme.colorSchemes.dark.palette.neutral.main
+          color: theme.vars.palette.background.paper,
+          backgroundColor: theme.vars.palette.neutral.main
+        })
+      }
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.vars.palette.neutral.light,
+          background: theme.vars.palette.background.paper,
         })
       }
     }
