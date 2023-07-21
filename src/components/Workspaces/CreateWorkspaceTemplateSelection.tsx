@@ -1,16 +1,14 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import TemplatesTable from '../TemplatesTable';
+import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
-type Props = {
-  selectedTemplate: string | undefined
-  setSelectedTemplate: React.Dispatch<React.SetStateAction<string | undefined>>
-}
 
-const CreateWorkspaceTemplateSelection: React.FunctionComponent<Props> = (props) => {
+const CreateWorkspaceTemplateSelection: React.FunctionComponent = () => {
+  const { selectedTemplate, setSelectedTemplate } = useCreateWorkspace()
   return (
     <Box>
-      <TemplatesTable handleRowClick={(id) => {console.log(id);props.setSelectedTemplate(id)}} selectedID={props.selectedTemplate} />
+      <TemplatesTable handleRowClick={(id) => { console.log(id); setSelectedTemplate(id) }} selectedID={selectedTemplate} />
     </Box>
   )
 }

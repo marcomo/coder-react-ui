@@ -1,34 +1,31 @@
 import React, { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, useColorScheme } from '@mui/material';
-import CreateWorkspaceTemplateSelection from './CreateWorkspaceTemplateSelection';
 import ScopedColorScheme from '../ScopedColorScheme';
+import CreateWorkspaceTemplateStep from "./CreateWorkspaceTemplateStep";
+import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
-type Props = {
-  dialogOpen: boolean
-  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const CreateWorkspaceDialog: React.FunctionComponent<Props> = (props) => {
-  const [selectedTemplate, setSelectedTemplate] = useState<string>()
-  const [wizardStep, setWizardStep] = useState<number>(1)
-
+const CreateWorkspaceDialog: React.FunctionComponent = () => {
+  const { dialogOpen, setDialogOpen, selectedTemplate, setSelectedTemplate, wizardStep, setWizardStep } = useCreateWorkspace()
   return (
     /**
      * ScopedColorScheme is needed here as Dialog
      * is not render inside "root". Needs to be inside Dialog
      * as Dialog gets pulled out of its parent.
      */
-    <Dialog open={props.dialogOpen} maxWidth="lg" fullWidth>
+    <Dialog open={dialogOpen} maxWidth="lg" fullWidth>
       <ScopedColorScheme>
         <DialogTitle>Create a Workspace</DialogTitle>
         <DialogContent>
-          <CreateWorkspaceTemplateSelection
-            selectedTemplate={selectedTemplate}
-            setSelectedTemplate={setSelectedTemplate}
-          />
+          {
+            wizardStep === 1
+              ? <CreateWorkspaceTemplateStep />
+              : wizardStep === 2
+                ? <div>Wizard Step 2</div>
+                : <div>Wizard Step 3</div>
+          }
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" size="medium" onClick={() => { props.setDialogOpen(false); setSelectedTemplate(undefined) }}>
+          <Button variant="outlined" size="medium" onClick={() => { setDialogOpen(false); setSelectedTemplate(undefined) }}>
             close
           </Button>
           <Button variant="contained" size="medium" color="primary" disabled={!selectedTemplate} onClick={() => { setWizardStep(2) }}>
