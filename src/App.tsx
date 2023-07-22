@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from './components/Router';
-import './App.scss';
+// import './App.scss';
 import { Container } from '@mui/material';
 
 const App: React.FunctionComponent = () => {
@@ -12,7 +12,7 @@ const App: React.FunctionComponent = () => {
      * here should any dev running this code might have mode set in
      * localStorage resulting in unwanted (incomplete) light-mode theme.
      */
-    <Container disableGutters className="App" data-mui-color-scheme="dark">
+    <Container disableGutters data-mui-color-scheme="dark">
       <Router />
     </Container>
   );
