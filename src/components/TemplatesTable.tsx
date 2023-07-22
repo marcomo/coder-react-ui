@@ -21,7 +21,7 @@ type Props = {
 const TemplatesTable: React.FunctionComponent<Props> = (props) => {
   const templates = useTemplates()
   return (
-    <TableContainer sx={{ maxHeight: "50vh" }}>
+    <TableContainer sx={{ height: "40vh" }}>
       <Table stickyHeader>
         <TableHead
           sx={{
@@ -55,9 +55,9 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
                 <TableCell component="th" scope="row">
                   <Box display="flex" alignItems="center" gap="1rem">
                     <Avatar
-                      sx={selected ? { bgcolor: "var(--color-ink-100)", color: "var(--color-emphasis)"} : {}}
+                      sx={selected ? { bgcolor: "var(--color-ink-100)", color: "var(--color-emphasis)" } : {}}
                     >
-                      { selected ? <Check /> : template.name[0].toUpperCase() }
+                      {selected ? <Check /> : template.name[0].toUpperCase()}
                     </Avatar>
                     {template.name}
                   </Box>
@@ -72,7 +72,8 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
                   dayjs.unix(template.lastUpdated).fromNow()
                 }</TableCell>
               </TableRow>
-            )}
+            )
+          }
           )}
         </TableBody>
       </Table>
