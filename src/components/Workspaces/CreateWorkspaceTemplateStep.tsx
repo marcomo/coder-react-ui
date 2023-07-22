@@ -1,13 +1,14 @@
 import React from "react";
-import { DialogContent } from '@mui/material';
-import CreateWorkspaceTemplateSelection from "./CreateWorkspaceTemplateSelection";
-
+import TemplatesTable from '../TemplatesTable';
+import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
 const CreateWorkspaceTemplateStep: React.FunctionComponent = () => {
+  const { selectedTemplate, dispatch } = useCreateWorkspace()
   return (
-    <DialogContent>
-      <CreateWorkspaceTemplateSelection />
-    </DialogContent>
+    <TemplatesTable
+      handleRowClick={(id) => dispatch({ type: "set_template", id })}
+      selectedID={selectedTemplate}
+      sx={{ borderBottom: "none", borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }} />
   )
 }
 

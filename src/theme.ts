@@ -17,7 +17,7 @@ const theme = extendTheme({
       color: "var(--color-ink-200)"
     },
   },
-  spacing: 16,
+  spacing: (factor: number) => `${factor}rem`,
   shape: {
     borderRadius: 4
   },
@@ -135,7 +135,7 @@ const theme = extendTheme({
           fontSize: 16,
           color: theme.vars.palette.text.secondary,
           borderBottom: theme.vars.palette.border.main,
-          padding: "0.75rem 0.5rem",
+          padding: theme.spacing(.75, 0.5),
         }),
       },
     },
@@ -174,6 +174,28 @@ const theme = extendTheme({
         root: ({ theme }) => ({
           color: theme.vars.palette.neutral.light,
           background: theme.vars.palette.background.paper,
+        })
+      }
+    },
+    MuiScopedCssBaseline: {
+      styleOverrides: {
+        root: {
+          flex: 1,
+          backgroundColor: "transparent"
+        }
+      }
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(2, 4)
+        })
+      }
+    },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(2, 4)
         })
       }
     }

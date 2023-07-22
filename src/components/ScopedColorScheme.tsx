@@ -8,7 +8,7 @@ const ScopedColorScheme: React.FunctionComponent = (props) => {
      * Primarly used to style native browser components (eg. scrollbar)
      * via enableColorScheme prop.
      */
-    <ScopedCssBaseline data-mui-color-scheme={mode} enableColorScheme sx={{ flex: 1 }}>
+    <ScopedCssBaseline data-mui-color-scheme={mode} enableColorScheme>
       {props.children}
     </ScopedCssBaseline>
   )

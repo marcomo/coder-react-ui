@@ -11,22 +11,24 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import Box from '@mui/material/Box';
 import { useTemplates } from '../context/TemplatesContext';
 import { Check } from '@mui/icons-material';
+import { SxProps, Theme } from "@mui/material";
 dayjs.extend(relativeTime)
 
 type Props = {
   handleRowClick(id: string): void
   selectedID?: string
+  sx?: SxProps<Theme>
 }
 
 const TemplatesTable: React.FunctionComponent<Props> = (props) => {
   const templates = useTemplates()
   return (
-    <TableContainer sx={{ height: "40vh" }}>
+    <TableContainer sx={{ height: "40vh", ...props.sx }}>
       <Table stickyHeader>
         <TableHead
           sx={{
-            '& th:first-child': { paddingLeft: "2rem" },
-            '& th:last-child': { paddingRight: "2rem" },
+            '& th:first-child': { pl: 2 },
+            '& th:last-child': { pr: 2 },
             '&:last-child td, &last-child th': { border: 0 }
           }}
         >
@@ -47,8 +49,8 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
                 key={template.name}
                 onClick={() => props.handleRowClick(template.id)}
                 sx={{
-                  '& th:first-child': { paddingLeft: "2rem" },
-                  '& td:last-child': { paddingRight: "2rem" },
+                  '& th:first-child': { pl: 2 },
+                  '& td:last-child': { pr: 2 },
                   '&:last-child td, &last-child th': { border: 0 }
                 }}
               >

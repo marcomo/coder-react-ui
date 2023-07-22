@@ -4,6 +4,8 @@ import ScopedColorScheme from '../ScopedColorScheme';
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 import CreateWorkspaceStepper from "./CreateWorkspaceStepper";
 import CreateWorkspaceTemplateStep from "./CreateWorkspaceTemplateStep";
+import CreateWorkspaceConfigureStep from "./CreateWorkspaceTemplateStep";
+import NoScrollBox from "../NoScrollBox";
 
 const CreateWorkspaceDialog: React.FunctionComponent = () => {
   const { dialogOpen, selectedTemplate, wizardStep, dispatch } = useCreateWorkspace()
@@ -34,21 +36,23 @@ const CreateWorkspaceDialog: React.FunctionComponent = () => {
       maxWidth="lg"
       fullWidth>
       <ScopedColorScheme>
-        <DialogTitle>Create a Workspace</DialogTitle>
-        <DialogContent>
-          <CreateWorkspaceStepper />
-          {wizardStep === 0 ? <CreateWorkspaceTemplateStep /> : null}
-          {wizardStep === 1 ? <div>Wizard Step 2</div> : null}
-          {wizardStep === 2 ? <div>Wizard Step 3</div> : null}
-        </DialogContent>
-        <DialogActions>
-          <Button variant="outlined" size="medium" onClick={() => dispatch({ type: "close_dialog" })}>
-            close
-          </Button>
-          <Button variant="contained" size="medium" color="primary" disabled={!selectedTemplate} onClick={confirmCallback}>
-            Confirm
-          </Button>
-        </DialogActions>
+        <NoScrollBox sx={{ p: 0 }}>
+          <DialogTitle>Create a Workspace</DialogTitle>
+          <DialogContent dividers sx={{ gap: 2, display: "flex", flexDirection: "column", px: 4, pt: 2, pb: 0 }}>
+            <CreateWorkspaceStepper />
+            {wizardStep === 0 ? <CreateWorkspaceTemplateStep /> : null}
+            {wizardStep === 1 ? <div>Wizard Step 2</div> : null}
+            {wizardStep === 2 ? <div>Wizard Step 3</div> : null}
+          </DialogContent>
+          <DialogActions>
+            <Button variant="outlined" size="medium" onClick={() => dispatch({ type: "close_dialog" })}>
+              close
+            </Button>
+            <Button variant="contained" size="medium" color="primary" disabled={!selectedTemplate} onClick={confirmCallback}>
+              Confirm
+            </Button>
+          </DialogActions>
+        </NoScrollBox>
       </ScopedColorScheme>
     </Dialog>
   )
