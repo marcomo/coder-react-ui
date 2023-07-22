@@ -4,18 +4,16 @@ import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 import EastIcon from '@mui/icons-material/East';
 
 const CreateWorkspaceButton: React.FunctionComponent = () => {
-  const { setDialogOpen } = useCreateWorkspace()
+  const { dispatch } = useCreateWorkspace()
   return (
     <Button
       variant="contained"
       size="large"
       color="primary"
-      onClick={() => {
-        setDialogOpen(true)
-      }}
-      startIcon={<EastIcon />}>
+      onClick={() => dispatch({ type: "open_dialog" })}
+      startIcon={< EastIcon />}>
       Select a Template
-    </Button>
+    </Button >
   )
 }
 

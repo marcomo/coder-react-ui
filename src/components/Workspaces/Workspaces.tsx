@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
 import ContentHeader from '../ContentHeader';
 import PageContentLayout from '../PageContentLayout';
 import { CreateWorkspace as CW, Workspaces as WS } from '.';
 import NoScrollBox from '../NoScrollBox';
-import { CreateWorkspaceProvider, Context } from "../../context/CreateWorkspaceContext";
+import { CreateWorkspaceProvider } from "../../context/CreateWorkspaceContext";
 
 const Workspaces: React.FunctionComponent = () => {
-  const [selectedTemplate, setSelectedTemplate] = useState<string>();
-  const [wizardStep, setWizardStep] = useState<Context["wizardStep"]>(0);
-  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
-
   return (
     <PageContentLayout>
-      <CreateWorkspaceProvider value={{ selectedTemplate, setSelectedTemplate, dialogOpen, setDialogOpen, wizardStep, setWizardStep }}>
+      <CreateWorkspaceProvider>
         <CW.Dialog />
         <WS.Header />
         <NoScrollBox sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>

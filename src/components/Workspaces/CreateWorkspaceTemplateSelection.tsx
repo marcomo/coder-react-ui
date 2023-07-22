@@ -5,10 +5,10 @@ import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
 
 const CreateWorkspaceTemplateSelection: React.FunctionComponent = () => {
-  const { selectedTemplate, setSelectedTemplate } = useCreateWorkspace()
+  const { selectedTemplate, dispatch } = useCreateWorkspace()
   return (
     <Box>
-      <TemplatesTable handleRowClick={(id) => { console.log(id); setSelectedTemplate(id) }} selectedID={selectedTemplate} />
+      <TemplatesTable handleRowClick={(id) => { console.log(id); dispatch({ type: "set_template", id }) }} selectedID={selectedTemplate} />
     </Box>
   )
 }

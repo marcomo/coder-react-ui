@@ -1,18 +1,16 @@
-import React, { useCallback } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import React from 'react';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Fade } from '@mui/material';
 import ScopedColorScheme from '../ScopedColorScheme';
 import { CreateWorkspace as CW } from ".";
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
 const CreateWorkspaceDialog: React.FunctionComponent = () => {
-  const { dialogOpen, setDialogOpen, selectedTemplate, setSelectedTemplate, wizardStep, setWizardStep } = useCreateWorkspace()
+  const { dialogOpen, selectedTemplate, wizardStep, dispatch } = useCreateWorkspace()
   const confirmCallback = () => {
     if (wizardStep === 2) {
-      setSelectedTemplate(undefined);
-      setWizardStep(0);
-      setDialogOpen(false);
+      dispatch({ type: "close_dialog" })
     } else {
-      setWizardStep(wizardStep + 1);
+      dispatch({ type: "increment_step" })
     }
   }
   return (
@@ -22,7 +20,18 @@ const CreateWorkspaceDialog: React.FunctionComponent = () => {
      * as Dialog gets pulled out of its parent.
      */
 
-    <Dialog open={dialogOpen} maxWidth="lg" fullWidth>
+    <Dialog
+      open={dialogOpen}
+      TransitionProps={{
+        "onExited": () => {
+          if (!dialogOpen) dispatch({ type: "reset" })
+        }
+      }}
+      TransitionComponent={Fade}
+      transitionDuration={300}
+      closeAfterTransition
+      maxWidth="lg"
+      fullWidth>
       <ScopedColorScheme>
         <DialogTitle>Create a Workspace</DialogTitle>
         <DialogContent>
@@ -32,11 +41,7 @@ const CreateWorkspaceDialog: React.FunctionComponent = () => {
           {wizardStep === 2 ? <div>Wizard Step 3</div> : null}
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" size="medium" onClick={() => {
-            setDialogOpen(false);
-            setSelectedTemplate(undefined);
-            setWizardStep(0);
-          }}>
+          <Button variant="outlined" size="medium" onClick={() => dispatch({ type: "close_dialog" })}>
             close
           </Button>
           <Button variant="contained" size="medium" color="primary" disabled={!selectedTemplate} onClick={confirmCallback}>

@@ -1,21 +1,45 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
+import { Action, CreateWorkspaceReducer as Reducer, Context, State } from "../components/Workspaces/types";
 
-type SetState<T = undefined> = React.Dispatch<React.SetStateAction<T>>
+const initialState = { selectedTemplate: undefined, dialogOpen: false, wizardStep: -1 };
 
-export type Context = {
-  selectedTemplate: string | undefined
-  setSelectedTemplate: SetState<Context["selectedTemplate"]>
-  dialogOpen: boolean
-  setDialogOpen: SetState<Context["dialogOpen"]>
-  wizardStep: number
-  setWizardStep: SetState<Context["wizardStep"]>
+const initializeCreateWorkspaceState = (initialState: State) => {
+  return initialState;
 }
+
+const reducer: Reducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case "set_template":
+      return { ...state, selectedTemplate: action.id }
+
+    case "open_dialog":
+      return { ...state, dialogOpen: true, wizardStep: 0 }
+
+    case "close_dialog":
+      return { ...state, dialogOpen: false }
+
+    case "increment_step":
+      return { ...state, wizardStep: state.wizardStep + 1 }
+
+    case "reset":
+      return initialState;
+
+    default:
+      return { ...state }
+  }
+};
+
 
 export const CreateWorkspaceContext = createContext<Context>({} as Context)
 
-export const CreateWorkspaceProvider: React.FunctionComponent<{ value: Context }> = (props) => {
+export const CreateWorkspaceProvider: React.FunctionComponent = (props) => {
+  const [state, dispatch] = useReducer<Reducer, State>(
+    reducer,
+    initialState,
+    initializeCreateWorkspaceState
+  );
   return (
-    <CreateWorkspaceContext.Provider value={props.value}>{props.children}</CreateWorkspaceContext.Provider>
+    <CreateWorkspaceContext.Provider value={{ ...state, dispatch }}>{props.children}</CreateWorkspaceContext.Provider>
   )
 }
 
