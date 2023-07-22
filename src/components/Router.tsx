@@ -1,10 +1,12 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppBar from './AppBar';
 import { NavMenu, NavItem } from '../@types/nav';
 import Workspaces from './Workspaces';
 import Templates from './Templates';
 import { TemplatesProvider } from '../context/TemplatesContext';
+import { Link } from "@mui/material";
+import PageContentLayout from "./PageContentLayout";
 
 export const navMenu: NavMenu = Object.keys(NavItem).reduce<NavMenu>((prev, item) => {
   return {
@@ -23,6 +25,14 @@ const Components: { [key: string]: React.ComponentType } = {
   [NavItem.audit]: () => <div>audit</div>,
   [NavItem.workspaces]: Workspaces,
   [NavItem.templates]: Templates,
+  home: () => <Navigate to={navMenu[NavItem.workspaces].path} />,
+  noMatch: () => (
+    <PageContentLayout>
+      <div>Nothing here. Go to <Link href={navMenu[NavItem.templates].path}>
+        Workspaces
+      </Link></div>
+    </PageContentLayout>
+  ),
 }
 
 function Router() {
@@ -36,6 +46,8 @@ function Router() {
               <Route key={item.path} path={item.path} Component={Components[item.value]} />
             ))
           }
+          <Route path="/" Component={Components.home} />
+          <Route path="*" Component={Components.noMatch} />
         </Routes>
       </TemplatesProvider>
     </BrowserRouter>
