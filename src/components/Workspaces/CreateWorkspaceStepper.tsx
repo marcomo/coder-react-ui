@@ -21,7 +21,7 @@ const steps = [
 const CreateWorkspaceStepper: React.FunctionComponent = () => {
   const { wizardStep } = useCreateWorkspace()
   return (
-    <Stepper activeStep={wizardStep} alternativeLabel>
+    <Stepper activeStep={wizardStep} sx={{ px: 8 }}>
       {steps.map((step) => (
         <Step key={step.id}>
           <StepLabel>{step.label}</StepLabel>
