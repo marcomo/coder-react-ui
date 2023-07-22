@@ -4,11 +4,11 @@ import ContentHeader from '../ContentHeader';
 import PageContentLayout from '../PageContentLayout';
 import { CreateWorkspace as CW, Workspaces as WS } from '.';
 import NoScrollBox from '../NoScrollBox';
-import { CreateWorkspaceProvider } from "../../context/CreateWorkspaceContext";
+import { CreateWorkspaceProvider, Context } from "../../context/CreateWorkspaceContext";
 
 const Workspaces: React.FunctionComponent = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>();
-  const [wizardStep, setWizardStep] = useState<number>(1);
+  const [wizardStep, setWizardStep] = useState<Context["wizardStep"]>(0);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   return (

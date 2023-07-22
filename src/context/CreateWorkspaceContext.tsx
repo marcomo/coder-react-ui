@@ -1,12 +1,14 @@
 import React, { createContext, useContext } from 'react';
 
-type Context = {
+type SetState<T = undefined> = React.Dispatch<React.SetStateAction<T>>
+
+export type Context = {
   selectedTemplate: string | undefined
-  setSelectedTemplate: React.Dispatch<React.SetStateAction<string | undefined>>
+  setSelectedTemplate: SetState<Context["selectedTemplate"]>
   dialogOpen: boolean
-  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setDialogOpen: SetState<Context["dialogOpen"]>
   wizardStep: number
-  setWizardStep: React.Dispatch<React.SetStateAction<number>>
+  setWizardStep: SetState<Context["wizardStep"]>
 }
 
 export const CreateWorkspaceContext = createContext<Context>({} as Context)
