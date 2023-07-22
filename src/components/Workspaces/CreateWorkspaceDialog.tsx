@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Fade } from '@mui/material';
 import ScopedColorScheme from '../ScopedColorScheme';
-import { CreateWorkspace as CW } from ".";
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import CreateWorkspaceStepper from "./CreateWorkspaceStepper";
+import CreateWorkspaceTemplateStep from "./CreateWorkspaceTemplateStep";
 
 const CreateWorkspaceDialog: React.FunctionComponent = () => {
   const { dialogOpen, selectedTemplate, wizardStep, dispatch } = useCreateWorkspace()
@@ -35,8 +36,8 @@ const CreateWorkspaceDialog: React.FunctionComponent = () => {
       <ScopedColorScheme>
         <DialogTitle>Create a Workspace</DialogTitle>
         <DialogContent>
-          <CW.Stepper />
-          {wizardStep === 0 ? <CW.TemplateStep /> : null}
+          <CreateWorkspaceStepper />
+          {wizardStep === 0 ? <CreateWorkspaceTemplateStep /> : null}
           {wizardStep === 1 ? <div>Wizard Step 2</div> : null}
           {wizardStep === 2 ? <div>Wizard Step 3</div> : null}
         </DialogContent>

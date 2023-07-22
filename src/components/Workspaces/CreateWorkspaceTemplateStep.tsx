@@ -1,11 +1,12 @@
 import React from "react";
 import { DialogContent } from '@mui/material';
-import { CreateWorkspace } from '.';
+import CreateWorkspaceTemplateSelection from "./CreateWorkspaceTemplateSelection";
+
 
 const CreateWorkspaceTemplateStep: React.FunctionComponent = () => {
   return (
     <DialogContent>
-      <CreateWorkspace.TemplateSelection />
+      <CreateWorkspaceTemplateSelection />
     </DialogContent>
   )
 }
