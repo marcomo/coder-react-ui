@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { PropsWithChildren, createContext, useContext } from 'react';
 import { Template } from '../components/Templates/template';
 
 export const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
@@ -11,7 +11,7 @@ export const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
 
 export const TemplatesContext = createContext<Template[]>([])
 
-export const TemplatesProvider: React.FunctionComponent = ({ children }) => {
+export const TemplatesProvider: React.FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <TemplatesContext.Provider value={templates}>{children}</TemplatesContext.Provider>
   )

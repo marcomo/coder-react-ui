@@ -1,5 +1,5 @@
 import { Box, SxProps, Theme } from '@mui/material';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, PropsWithChildren } from 'react';
 
 type Props = {
   sx?: SxProps<Theme>
@@ -8,7 +8,7 @@ type Props = {
   disableScroll?: boolean
 }
 
-const ScrollBox: React.FunctionComponent<Props> = (props) => {
+const ScrollBox: React.FunctionComponent<PropsWithChildren<Props>> = (props) => {
   return (
     <Box
       sx={(theme) => ({

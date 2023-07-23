@@ -15,7 +15,7 @@ const ContentHeader: React.FunctionComponent<Props> = (props) => {
       <Typography variant='h1' align={props.center ? "center" : "left"}>{props.primaryText}</Typography>
       {
         Secondary ? <Typography variant='h2' align={props.center ? "center" : "left"}>{
-          typeof props.secondaryText === "string" ? Secondary : <Secondary />
+          (typeof props.secondaryText) === "string" ? (Secondary as string) : <Secondary />
         }</Typography> : null
       }
     </Box>
