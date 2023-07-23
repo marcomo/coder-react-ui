@@ -3,7 +3,7 @@ import TemplatesTable from './TemplatesTable';
 import ContentHeader from '../ContentHeader';
 import PageContentLayout from '../PageContentLayout';
 import { Box } from '@mui/material';
-import NoScrollBox from '../ScrollBox';
+import ScrollBox from '../ScrollBox';
 
 const Templates: React.FunctionComponent = () => {
   return (
@@ -14,9 +14,9 @@ const Templates: React.FunctionComponent = () => {
           secondaryText='Select a template to create a workspace.'
         />
       </Box>
-      <NoScrollBox>
+      <ScrollBox sx={{ p: 0 }}>
         <TemplatesTable handleRowClick={() => { }} />
-      </NoScrollBox>
+      </ScrollBox>
     </PageContentLayout>
   )
 }

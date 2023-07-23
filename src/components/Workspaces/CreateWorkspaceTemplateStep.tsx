@@ -1,5 +1,5 @@
 import React from "react";
-import TemplatesTable from '../TemplatesTable';
+import TemplatesTable from '../Templates/TemplatesTable';
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 
 const CreateWorkspaceTemplateStep: React.FunctionComponent = () => {

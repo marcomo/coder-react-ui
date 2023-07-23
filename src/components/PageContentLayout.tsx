@@ -5,7 +5,7 @@ import ScopedColorScheme from './ScopedColorScheme';
 const PageContentLayout: React.FunctionComponent = (props) => {
   return (
     <ScopedColorScheme>
-      <Container maxWidth="lg" sx={{ p: 3 }}>
+      <Container maxWidth="lg" sx={{ py: 3 }}>
         {props.children}
       </Container>
     </ScopedColorScheme>

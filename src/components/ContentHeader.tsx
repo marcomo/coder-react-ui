@@ -11,7 +11,7 @@ type Props = {
 const ContentHeader: React.FunctionComponent<Props> = (props) => {
   const Secondary = props.secondaryText;
   return (
-    <Box display="flex" flexDirection="column" gap={1} alignItems={props.center ? "center" : "flex-start"}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 1, alignItems: props.center ? "center" : "flex-start" }}>
       <Typography variant='h1' align={props.center ? "center" : "left"}>{props.primaryText}</Typography>
       {
         Secondary ? <Typography variant='h2' align={props.center ? "center" : "left"}>{
