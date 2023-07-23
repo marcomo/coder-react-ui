@@ -20,7 +20,7 @@ const CreateWorkspaceBuildProgress: React.FunctionComponent<Props> = (props) => 
     <Box display="flex" flexDirection="column">
       <LinearProgress variant="determinate" value={elapsed} />
       {
-        buildDone ? (
+        !buildDone ? (
           <Typography variant="body2" sx={{ alignSelf: "flex-end" }}>
             <span style={{ color: "var(--color-ink-200)" }}>Time remaining:&nbsp;</span>
             <span>up to&nbsp;{remaining}</span>
