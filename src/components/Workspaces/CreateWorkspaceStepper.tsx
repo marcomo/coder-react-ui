@@ -20,7 +20,6 @@ const steps = [
 const CreateWorkspaceStepper: React.FunctionComponent = () => {
   const { wizardStep, buildDone } = useCreateWorkspace()
 
-  console.log({ wizardStep })
   return (
     <Stepper activeStep={wizardStep} sx={{ px: 8 }}>
       {steps.map((step, idx) => (
