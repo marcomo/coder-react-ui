@@ -13,7 +13,7 @@ const steps = [
   },
   {
     id: 'build',
-    label: 'Create an Build',
+    label: 'Build',
   }
 ];
 
