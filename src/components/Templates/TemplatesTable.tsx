@@ -5,13 +5,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Avatar from '@mui/material/Avatar';
 import dayjs from 'dayjs';
 import relativeTime from "dayjs/plugin/relativeTime"
-import Box from '@mui/material/Box';
-import { useTemplates } from '../context/TemplatesContext';
-import { Check } from '@mui/icons-material';
+import { useTemplates } from '../../context/TemplatesContext';
 import { SxProps, Theme } from "@mui/material";
+import AvatarTextBox from "../AvatarTextBox";
 dayjs.extend(relativeTime)
 
 type Props = {
@@ -55,14 +53,12 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
                 }}
               >
                 <TableCell component="th" scope="row">
-                  <Box display="flex" alignItems="center" gap="1rem">
-                    <Avatar
-                      sx={selected ? { bgcolor: "var(--color-ink-100)", color: "var(--color-emphasis)" } : {}}
-                    >
-                      {selected ? <Check /> : template.name[0].toUpperCase()}
-                    </Avatar>
-                    {template.name}
-                  </Box>
+                  <AvatarTextBox
+                    text={template.name}
+                    sx={selected ? { bgcolor: "var(--color-ink-100)", color: "var(--color-emphasis)" } : {}}
+                    checkable
+                    isChecked={selected}
+                  />
                 </TableCell>
                 <TableCell align="right">{
                   (template.usedBy || "0") + " developers"

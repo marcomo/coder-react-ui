@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
-import { Template } from '../@types/template';
+import { Template } from '../components/Templates/template';
 
-const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
+export const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
   name: `docker-code-server-${idx < 10 ? "0" + idx : idx}`,
   id: `000${idx}`,
   usedBy: 2,

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppBar from './AppBar';
 import { NavMenu, NavItem } from '../@types/nav';
 import Workspaces from './Workspaces/Workspaces';
-import Templates from './Templates';
+import Templates from './Templates/Templates';
 import { TemplatesProvider } from '../context/TemplatesContext';
 import { Link } from "@mui/material";
 import PageContentLayout from "./PageContentLayout";

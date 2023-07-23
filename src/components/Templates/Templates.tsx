@@ -1,9 +1,9 @@
 import React from 'react';
 import TemplatesTable from './TemplatesTable';
-import ContentHeader from './ContentHeader';
-import PageContentLayout from './PageContentLayout';
+import ContentHeader from '../ContentHeader';
+import PageContentLayout from '../PageContentLayout';
 import { Box } from '@mui/material';
-import NoScrollBox from './NoScrollBox';
+import NoScrollBox from '../ScrollBox';
 
 const Templates: React.FunctionComponent = () => {
   return (
@@ -15,7 +15,7 @@ const Templates: React.FunctionComponent = () => {
         />
       </Box>
       <NoScrollBox>
-        <TemplatesTable handleRowClick={() => {}} />
+        <TemplatesTable handleRowClick={() => { }} />
       </NoScrollBox>
     </PageContentLayout>
   )
