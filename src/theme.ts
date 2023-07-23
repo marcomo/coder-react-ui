@@ -36,6 +36,7 @@ const theme = extendTheme({
           default: "var(--color-paper-100)",
           paper: "var(--color-paper-200)",
           paperLight: "var(--color-paper-300)",
+          defaultChannel: "255 255 255"
         },
         border: {
           main: "var(--border-100)"
@@ -196,6 +197,13 @@ const theme = extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           padding: theme.spacing(2, 4)
+        })
+      }
+    },
+    MuiStepIcon: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: `rgba(${theme.vars.palette.background.defaultChannel} / .5)`
         })
       }
     }
