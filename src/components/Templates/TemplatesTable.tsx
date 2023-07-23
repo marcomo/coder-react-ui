@@ -21,7 +21,7 @@ type Props = {
 const TemplatesTable: React.FunctionComponent<Props> = (props) => {
   const templates = useTemplates()
   return (
-    <TableContainer sx={{ height: "40vh", minHeight: "40rem", ...props.sx }}>
+    <TableContainer sx={props.sx}>
       <Table stickyHeader>
         <TableHead
           sx={{

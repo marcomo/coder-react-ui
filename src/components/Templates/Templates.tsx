@@ -15,7 +15,7 @@ const Templates: React.FunctionComponent = () => {
         />
       </Box>
       <ScrollBox sx={{ p: 0 }}>
-        <TemplatesTable handleRowClick={() => { }} />
+        <TemplatesTable handleRowClick={() => { }} sx={{ height: "60vh" }} />
       </ScrollBox>
     </PageContentLayout>
   )
