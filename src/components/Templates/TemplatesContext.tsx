@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, createContext, useContext } from 'react';
-import { Template } from '../components/Templates/template';
+import { Template } from './template';
 
 export const templates: Template[] = Array.from(Array(15)).map((num, idx) => ({
   name: `docker-code-server-${idx < 10 ? "0" + idx : idx}`,
