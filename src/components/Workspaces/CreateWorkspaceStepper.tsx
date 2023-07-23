@@ -18,11 +18,13 @@ const steps = [
 ];
 
 const CreateWorkspaceStepper: React.FunctionComponent = () => {
-  const { wizardStep } = useCreateWorkspace()
+  const { wizardStep, buildDone } = useCreateWorkspace()
+
+  console.log({ wizardStep })
   return (
     <Stepper activeStep={wizardStep} sx={{ px: 8 }}>
-      {steps.map((step) => (
-        <Step key={step.id}>
+      {steps.map((step, idx) => (
+        <Step key={step.id} completed={wizardStep > idx || buildDone}>
           <StepLabel>{step.label}</StepLabel>
         </Step>
       ))}
