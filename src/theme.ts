@@ -19,7 +19,7 @@ const theme = extendTheme({
   },
   spacing: (factor: number) => `${factor}rem`,
   shape: {
-    borderRadius: 2,
+    borderRadius: 4,
   },
   colorSchemes: {
     dark: {

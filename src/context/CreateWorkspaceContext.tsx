@@ -1,11 +1,22 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { PropsWithChildren, createContext, useContext, useReducer } from 'react';
 import { Action, CreateWorkspaceReducer as Reducer, Context, State } from "../components/Workspaces/types";
 
-const initialState: State = { selectedTemplate: undefined, workspaceName: undefined, dialogOpen: false, wizardStep: -1, stepIsValid: false, workspaceNameError: undefined };
+const initialState: State = {
+  selectedTemplate: undefined,
+  workspaceName: undefined,
+  dialogOpen: false,
+  wizardStep: -1,
+  stepIsValid: false,
+  workspaceNameError: undefined,
+  buildStage: 0,
+  buildDone: false
+};
 
 const initializeCreateWorkspaceState = (initialState: State) => {
   return initialState;
 }
+
+const WORKSPACE_NAME_ERROR = "Please enter a workspace name.";
 
 const reducer: Reducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -13,10 +24,18 @@ const reducer: Reducer = (state: State, action: Action) => {
       return { ...state, selectedTemplate: action.id, stepIsValid: true }
 
     case "set_workspace_name":
-      return { ...state, workspaceName: action.name, stepIsValid: !!action.name }
+      return {
+        ...state,
+        workspaceName: action.name,
+        stepIsValid: !!action.name,
+        workspaceNameError: !action.name ? WORKSPACE_NAME_ERROR : undefined
+      }
 
     case "set_workspace_name_error":
-      return { ...state, workspaceNameError: action.error, stepIsValid: false }
+      return { ...state, workspaceNameError: WORKSPACE_NAME_ERROR, stepIsValid: false }
+
+    case "increment_build_stage":
+      return { ...state, buildStage: state.buildStage + 1, buildDone: state.buildStage + 1 === 4 }
 
     case "open_dialog":
       return { ...state, dialogOpen: true, wizardStep: 0 }
@@ -24,8 +43,11 @@ const reducer: Reducer = (state: State, action: Action) => {
     case "close_dialog":
       return { ...state, dialogOpen: false }
 
-    case "increment_step":
+    case "increment_wizard_step":
       return { ...state, wizardStep: state.wizardStep + 1, stepIsValid: false }
+
+    case "decrement_wizard_step":
+      return { ...state, wizardStep: state.wizardStep - 1, stepIsValid: !!state.selectedTemplate }
 
     case "reset":
       return initialState;
@@ -38,7 +60,7 @@ const reducer: Reducer = (state: State, action: Action) => {
 
 export const CreateWorkspaceContext = createContext<Context>({} as Context)
 
-export const CreateWorkspaceProvider: React.FunctionComponent = (props) => {
+export const CreateWorkspaceProvider: React.FunctionComponent<PropsWithChildren> = (props) => {
   const [state, dispatch] = useReducer<Reducer, State>(
     reducer,
     initialState,

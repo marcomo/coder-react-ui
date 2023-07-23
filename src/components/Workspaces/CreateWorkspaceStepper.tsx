@@ -1,7 +1,6 @@
-import { Button, Step, StepLabel, Stepper } from "@mui/material";
+import { Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
-import EastIcon from '@mui/icons-material/East';
 
 const steps = [
   {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { PropsWithChildren } from "react";
 import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
 import ContentHeader from "../ContentHeader";
 import ScrollBox from "../ScrollBox";
@@ -7,7 +7,7 @@ import { Box, TextField } from "@mui/material";
 import AvatarTextBox from "../AvatarTextBox";
 
 // TODO: Move to seperate file
-const Section: React.FunctionComponent = (props) => {
+const Section: React.FunctionComponent<PropsWithChildren> = (props) => {
   return (
     <Box component="section" display={"flex"} flexDirection={"column"} gap={1} pb={4}>
       {props.children}
@@ -16,7 +16,7 @@ const Section: React.FunctionComponent = (props) => {
 }
 
 const CreateWorkspaceConfigureStep: React.FunctionComponent = () => {
-  const { selectedTemplate, workspaceNameError, dialogOpen, dispatch } = useCreateWorkspace()
+  const { selectedTemplate, workspaceNameError, dispatch } = useCreateWorkspace()
 
   return (
     <ScrollBox sx={{ p: 4, bgcolor: "var(--color-paper-100)", gap: 2, height: "40vh" }}>
@@ -33,17 +33,16 @@ const CreateWorkspaceConfigureStep: React.FunctionComponent = () => {
             error={!!workspaceNameError}
             onBlur={(event) => {
               /**
-               * Not ideal. This prevents the blur from triggering an invalidation when the cancel button
-               * of the Dialog is closed.
+               * This prevents the blur from triggering an invalidation when the Dialog
+               * Action buttons are clicked. Meh.
                */
-              const relatedTargetText = (event.relatedTarget as HTMLElement).innerText.toLowerCase()
-              if (relatedTargetText !== "cancel" && !event.target.value) {
-                dispatch({ type: "set_workspace_name_error", error: "Please enter a workspace name." })
+              const action = (event.relatedTarget as HTMLElement)?.closest(".MuiDialogActions-root")
+              if (!action && !event.target.value) {
+                dispatch({ type: "set_workspace_name_error" })
               }
             }}
             onChange={(event) => {
-              if (workspaceNameError && event.currentTarget.value) dispatch({ type: "set_workspace_name_error", error: "Please enter a workspace name." })
-              dispatch({ type: "set_workspace_name", name: event.currentTarget.value })
+              dispatch({ type: "set_workspace_name", name: event.target.value })
             }}
           />
         </Section>
