@@ -1,9 +1,15 @@
 import React, { PropsWithChildren, createContext, useContext, useReducer } from 'react';
-import { Action, CreateWorkspaceReducer as Reducer, Context, State } from "../components/Workspaces/types";
+import {
+  CreateWorkspaceAction as Action,
+  CreateWorkspaceReducer as Reducer,
+  CreateWorkspaceContext as Context,
+  CreateWorkspaceState as State
+} from "./types";
 
 const initialState: State = {
   selectedTemplate: undefined,
   workspaceName: undefined,
+  workspaceCreating: false,
   dialogOpen: false,
   wizardStep: -1,
   stepIsValid: false,
@@ -33,6 +39,12 @@ const reducer: Reducer = (state: State, action: Action) => {
 
     case "set_workspace_name_error":
       return { ...state, workspaceNameError: WORKSPACE_NAME_ERROR, stepIsValid: false }
+
+    case "set_workspace_creating":
+      return { ...state, workspaceCreating: true }
+
+    case "clear_workspace_creating":
+      return { ...state, workspaceCreating: false, wizardStep: state.wizardStep + 1 }
 
     case "increment_build_stage":
       return { ...state, buildStage: state.buildStage + 1, buildDone: state.buildStage + 1 === 4 }

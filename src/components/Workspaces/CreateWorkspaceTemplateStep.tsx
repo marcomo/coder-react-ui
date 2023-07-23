@@ -1,6 +1,6 @@
 import React from "react";
 import TemplatesTable from '../Templates/TemplatesTable';
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 
 const CreateWorkspaceTemplateStep: React.FunctionComponent = () => {
   const { selectedTemplate, dispatch } = useCreateWorkspace()

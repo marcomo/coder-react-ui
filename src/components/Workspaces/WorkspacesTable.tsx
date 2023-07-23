@@ -7,21 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import dayjs from 'dayjs';
 import relativeTime from "dayjs/plugin/relativeTime"
-import { useTemplates } from './TemplatesContext';
-import { SxProps, Theme } from "@mui/material";
 import AvatarTextBox from "../AvatarTextBox";
+import { useWorkspaces } from "./WorkspacesContext";
 dayjs.extend(relativeTime)
 
-type Props = {
-  handleRowClick(id: string): void
-  selectedID?: string
-  sx?: SxProps<Theme>
-}
-
-const TemplatesTable: React.FunctionComponent<Props> = (props) => {
-  const templates = useTemplates()
+const WorkspaceTable: React.FunctionComponent = (props) => {
+  const { workspaces } = useWorkspaces()
   return (
-    <TableContainer sx={props.sx}>
+    <TableContainer>
       <Table stickyHeader>
         <TableHead
           sx={{
@@ -32,20 +25,14 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
         >
           <TableRow>
             <TableCell align="left">Name</TableCell>
-            <TableCell align="right">Used by</TableCell>
-            <TableCell align="right">Build Time</TableCell>
-            <TableCell align="right">Last Updated</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {templates.map((template) => {
-            const selected = props.selectedID === template.id
+          {workspaces.map((workspace) => {
             return (
               <TableRow
                 hover
-                selected={selected}
-                key={template.name}
-                onClick={() => props.handleRowClick(template.id)}
+                key={workspace.name}
                 sx={{
                   '& th:first-child': { pl: 2 },
                   '& td:last-child': { pr: 2 },
@@ -54,21 +41,10 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
               >
                 <TableCell component="th" scope="row">
                   <AvatarTextBox
-                    text={template.name}
-                    sx={selected ? { bgcolor: "var(--color-ink-100)", color: "var(--color-emphasis)" } : {}}
+                    text={workspace.name}
                     checkable
-                    isChecked={selected}
                   />
                 </TableCell>
-                <TableCell align="right">{
-                  (template.usedBy || "0") + " developers"
-                }</TableCell>
-                <TableCell align="right">{
-                  template.buildTime + "s"
-                }</TableCell>
-                <TableCell align="right">{
-                  dayjs.unix(template.lastUpdated).fromNow()
-                }</TableCell>
               </TableRow>
             )
           }
@@ -79,4 +55,4 @@ const TemplatesTable: React.FunctionComponent<Props> = (props) => {
   )
 }
 
-export default TemplatesTable;
+export default WorkspaceTable;

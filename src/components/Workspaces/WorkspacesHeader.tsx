@@ -1,7 +1,6 @@
 import { Box, Link } from "@mui/material";
 import React from "react";
 import ContentHeader from "../ContentHeader";
-import { navMenu } from "../Router";
 import { NavItem } from "../../@types/nav";
 
 const WorkspacesHeader: React.FunctionComponent = () => {
@@ -13,7 +12,7 @@ const WorkspacesHeader: React.FunctionComponent = () => {
           () => (
             <div>
               <span>Create a new workspace from a&nbsp;</span>
-              <Link href={navMenu[NavItem.templates].path}>
+              <Link href={`/${NavItem.templates}`}>
                 Template
               </Link>
               <span>.</span>

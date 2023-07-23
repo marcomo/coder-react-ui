@@ -2,7 +2,7 @@ import React from "react";
 import { Box, CircularProgress, Collapse, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
 import { BuildStage } from "./types";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 import { CheckCircle } from "@mui/icons-material";
 
 type Props = {

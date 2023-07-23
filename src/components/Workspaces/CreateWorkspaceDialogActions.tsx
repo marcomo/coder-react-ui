@@ -1,16 +1,27 @@
 import { Box, Button, DialogActions } from "@mui/material";
 import WestIcon from '@mui/icons-material/West';
 import React from "react";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
+import { useWorkspaces } from "./WorkspacesContext";
 
 const CreateWorkspaceDialogActions: React.FunctionComponent = () => {
-  const { wizardStep, stepIsValid, buildDone, dispatch } = useCreateWorkspace()
+  const { dispatch: workspacesDispatch } = useWorkspaces()
+  const { wizardStep, stepIsValid, buildDone, workspaceName, dispatch } = useCreateWorkspace()
 
   const confirmCallback = () => {
-    if (wizardStep === 2) {
-      dispatch({ type: "close_dialog" })
-    } else {
-      dispatch({ type: "increment_wizard_step" })
+    switch (wizardStep) {
+      case 1:
+        if (workspaceName) workspacesDispatch({ type: "add", workspaceName })
+        dispatch({ type: "set_workspace_creating" })
+        break;
+
+      case 2:
+        dispatch({ type: "close_dialog" })
+        break;
+
+      default:
+        dispatch({ type: "increment_wizard_step" })
+        break;
     }
   }
 
@@ -19,6 +30,7 @@ const CreateWorkspaceDialogActions: React.FunctionComponent = () => {
   }
 
   const backEnabled = wizardStep === 1
+
   return (
     <DialogActions sx={{ justifyContent: backEnabled ? "space-between" : "flex-end" }}>
       {

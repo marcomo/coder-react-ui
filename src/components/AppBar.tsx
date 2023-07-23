@@ -5,10 +5,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 import CoderIcon from './CoderIcon';
-import { NavMenu } from '../@types/nav';
 import { Link } from "@mui/material";
+import { NavItem } from '../@types/nav';
 
-const AppBar: React.FunctionComponent<{ navMenu: NavMenu }> = (props) => {
+const AppBar: React.FunctionComponent = (props) => {
   return (
     <MuiAppBar position="sticky">
       <Toolbar disableGutters>
@@ -16,9 +16,9 @@ const AppBar: React.FunctionComponent<{ navMenu: NavMenu }> = (props) => {
           <CoderIcon />
         </Link>
         <Box display="flex">
-          {Object.values(props.navMenu).map((item) => (
-            <Button variant='contained' color='neutral' key={item.path} to={item.path} component={NavLink} sx={{ height: "4rem" }}>
-              {item.label}
+          {Object.values(NavItem).map((item) => (
+            <Button variant='contained' color='neutral' key={item} to={`/${item}`} component={NavLink} sx={{ height: "4rem", textTransform: "capitalize" }}>
+              {item}
             </Button>
           ))}
         </Box>

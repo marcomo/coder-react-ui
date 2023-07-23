@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration"
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 import { BuildStage } from "./types";
 import CreateWorkspaceBuildStages from "./CreateWorkspaceBuildStages";
 import CreateWorkspaceBuildProgress from "./CreateWorkspaceBuildProgress";

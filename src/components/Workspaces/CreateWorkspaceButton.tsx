@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 import EastIcon from '@mui/icons-material/East';
 
 const CreateWorkspaceButton: React.FunctionComponent = () => {

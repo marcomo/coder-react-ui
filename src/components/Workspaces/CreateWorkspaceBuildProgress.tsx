@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, LinearProgress, Typography } from "@mui/material";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 import { BuildStage } from "./types";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration"

@@ -1,6 +1,6 @@
 import { Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 
 const steps = [
   {

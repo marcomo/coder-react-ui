@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
-import { useCreateWorkspace } from "../../context/CreateWorkspaceContext";
+import { useCreateWorkspace } from "./CreateWorkspaceContext";
 import ContentHeader from "../ContentHeader";
 import ScrollBox from "../ScrollBox";
-import { templates } from "../../context/TemplatesContext";
+import { templates } from "../Templates/TemplatesContext";
 import { Box, TextField } from "@mui/material";
 import AvatarTextBox from "../AvatarTextBox";
 
