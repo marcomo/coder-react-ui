@@ -78,7 +78,7 @@ The Wizard keeps the user informed about the stages of creating a workspace with
 - CI/CD Deployment
 - Responsive design
 - Accessibility
-- Convert CRA to Vite
+- Migrate to Vite
 - Light mode
 - Cache created workspaces
 - Table row deselection in (wizard 'select template' step)
