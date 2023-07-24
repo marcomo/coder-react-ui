@@ -52,7 +52,8 @@ const theme = extendTheme({
           defaultBg: "var(--color-paper-200)",
         }
       }
-    }
+    },
+    get light() { return this.dark }
   },
   components: {
     MuiButton: {
