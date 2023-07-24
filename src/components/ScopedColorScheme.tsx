@@ -1,7 +1,7 @@
 import { ScopedCssBaseline, useColorScheme } from '@mui/material';
 import React, { PropsWithChildren } from 'react';
 
-const ScopedColorScheme: React.FunctionComponent<PropsWithChildren> = (props) => {
+const ScopedColorScheme: React.FunctionComponent<PropsWithChildren<{}>> = (props) => {
   const { mode } = useColorScheme()
   return (
     /**

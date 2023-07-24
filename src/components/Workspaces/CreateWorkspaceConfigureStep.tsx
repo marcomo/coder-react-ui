@@ -7,7 +7,7 @@ import { Box, TextField } from "@mui/material";
 import AvatarTextBox from "../AvatarTextBox";
 
 // TODO: Move to seperate file
-const Section: React.FunctionComponent<PropsWithChildren> = (props) => {
+const Section: React.FunctionComponent<PropsWithChildren<{}>> = (props) => {
   return (
     <Box component="section" display={"flex"} flexDirection={"column"} gap={1} pb={4}>
       {props.children}

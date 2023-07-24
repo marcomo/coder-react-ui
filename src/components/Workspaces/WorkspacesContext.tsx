@@ -26,7 +26,7 @@ const reducer: Reducer = (state: State, action: Action) => {
 
 export const WorkspacesContext = createContext<Context>({} as Context)
 
-export const WorkspacesProvider: React.FunctionComponent<PropsWithChildren> = ({ children }) => {
+export const WorkspacesProvider: React.FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   const [state, dispatch] = useReducer<Reducer, State>(
     reducer,
     initialState,

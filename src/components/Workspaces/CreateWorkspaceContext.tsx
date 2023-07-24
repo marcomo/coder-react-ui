@@ -72,7 +72,7 @@ const reducer: Reducer = (state: State, action: Action) => {
 
 export const CreateWorkspaceContext = createContext<Context>({} as Context)
 
-export const CreateWorkspaceProvider: React.FunctionComponent<PropsWithChildren> = (props) => {
+export const CreateWorkspaceProvider: React.FunctionComponent<PropsWithChildren<{}>> = (props) => {
   const [state, dispatch] = useReducer<Reducer, State>(
     reducer,
     initialState,
