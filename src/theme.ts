@@ -69,6 +69,11 @@ const theme = extendTheme({
           fontWeight: 400,
           fontSize: "1rem",
           display: "flex",
+          ":disabled": {
+            opacity: .5,
+            color: theme.vars.palette.text.primary,
+            backgroundColor: theme.vars.palette.background.paperLight
+          }
         }),
         contained: ({ theme }) => ({
           backgroundColor: theme.vars.palette.Button.inheritContainedBg,
