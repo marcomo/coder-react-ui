@@ -30,7 +30,28 @@ http://localhost:3000
 
 When I got started with Coder, I created a Template based on [sharkymark/coder-react](https://github.com/sharkymark/coder-react). This template had a Create React App basic project set up, so I decided to work from there. I developed this project completely in a Coder workspace and pushed the code out to Github from there.
 
-### Things included
+### What I Worked on
+
+I developed a Wizard for the Create Workspace flow. The Wizard has three steps:
+
+1. Select Template
+2. Configure
+3. Build
+
+The Wizard keeps the user informed about the stages of creating a workspace without moving them around various screens. User is in control of where they go next and stay where they started if they cancel.
+
+### Features
+
+- All in one screen, no changing routes
+- Cancel from step 1 or 2
+- Template selection uses same Table UI as Templates page
+- Input validation
+- Go back to template selection from configuration
+- Simple checklist animation of build process
+- Stay on Workspaces or go to new Workspace after completion
+- New workspace displays in Workspaces view after creation
+
+### Technical things included
 
 - Material UI components and theme
 - CSS Variables and MUI support via experimental CssVarsProvider
@@ -50,6 +71,7 @@ When I got started with Coder, I created a Template based on [sharkymark/coder-r
 - Accessibility
 - Convert CRA to Vite
 - Light mode
+- Cache created workspaces
 - Table row deselection in (wizard 'select template' step)
 
 ### Resources
