@@ -1,49 +1,59 @@
-# HelloWorld Node.js and React app (coder-react)
+# Coder Take-Home Project
 
 ### Instructions
 
-1. Click Open in Coder
-1. Authenticate into Coder and a Node.JS Docker workspace is built with populated parameter for the Node React repo
+Pull it:
 
-</br>
-
-##### coder-oss.demo.coder.com as a Kubernetes pod
-[![Open in Coder - ae pod](https://coder-oss.demo.coder.com/open-in-coder.svg)](https://coder-oss.demo.coder.com/templates/pod-node-oic/workspace?param.Git%20Repo%20URL=https://github.com/sharkymark/coder-react)
-
-</br>
-
-##### eks-v2.demo.coder.com as a Kubernetes pod
-[![Open in Coder - ae pod](https://eks-v2.demo.coder.com/open-in-coder.svg)](https://eks-v2.demo.coder.com/templates/pod-node-oic/workspace?param.Git%20Repo%20URL=https://github.com/sharkymark/coder-react)
-
-</br>
-
-##### oss.demo.coder.com as a Kubernetes pod
-[![Open in Coder - oss pod](https://oss.demo.coder.com/open-in-coder.svg)](https://oss.demo.coder.com/templates/pod-node-oic/workspace?param.Git%20Repo%20URL=https://github.com/sharkymark/coder-react)
-
-</br>
-
-##### Red Hat OpenShift
-[![Open in Coder - oss pod](https://v2-oss.apps.openshift.cdr.dev/open-in-coder.svg)](https://v2-oss.apps.openshift.cdr.dev/templates/pod-node-oic/workspace?param.Git%20Repo%20URL=https://github.com/sharkymark/coder-react)
-
-</br>
-
-### Known things
-
-1. If `yarn start` fails, it may be you are on an older version of `node` - add this to the start script in `package.json`
-
-```sh
-  "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start"
 ```
+git clone https://github.com/marcomo/coder-react-ui.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run it in development:
+
+```
+npm start
+```
+
+View it:
+
+```
+http://localhost:3000
+```
+
+### How I Developed this Project
+
+When I got started with Coder, I created a Template based on [sharkymark/coder-react](https://github.com/sharkymark/coder-react). This template had a Create React App basic project set up, so I decided to work from there. I developed this project completely in a Coder workspace and pushed the code out to Github from there.
+
+### Things included
+
+- Material UI components and theme
+- CSS Variables and MUI support via experimental CssVarsProvider
+- Figma variables and tokens
+- Custom theming
+- React Router
+- Recreation of App Bar, Templates Table, and Workspaces
+- Custom Hooks
+- Dialog Box Wizard
+- Transitions and Animation
+
+### Things I didn't get to or would do
+
+- Tests
+- CI/CD Deployment
+- Responsive design
+- Accessibility
+- Convert CRA to Vite
+- Light mode
+- Table row deselection in (wizard 'select template' step)
 
 ### Resources
 
-[Coder docs on Open in Coder](https://coder.com/docs/v2/latest/templates/open-in-coder)
+[Figma Presentation](https://www.figma.com/proto/8h3ymWdvjyTkIg8CkV4kMV/Workspace-Creation?page-id=33%3A3646&type=design&node-id=33-3647&viewport=978%2C684%2C0.13&t=0aZAqtjmq0furLtI-1&scaling=contain&mode=design)
 
-[Coder provider Git Auth docs](https://registry.terraform.io/providers/coder/coder/latest/docs/data-sources/git_auth)
-
-[Coder docs to configure Git Auth](https://coder.com/docs/v2/latest/admin/git-providers)
-
-[GitHub docs for creating an OAuth app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
-
-[Terraform kreuzwerker Docker provider](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/container)
+[Figma File](https://www.figma.com/file/8h3ymWdvjyTkIg8CkV4kMV/Workspace-Creation?type=design&node-id=33%3A3646&mode=design&t=l91DniDOy2Va3t88-1)
