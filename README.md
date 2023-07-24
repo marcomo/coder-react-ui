@@ -1,5 +1,13 @@
 # Coder Take-Home Project
 
+![coder_wizard](https://github.com/marcomo/coder-react-ui/assets/5035442/716da864-a797-426b-8e44-05389118ebd0)
+
+## Create Workspaces Flow - Wizard
+
+This project is a POC of an alternative workflow for creating workspaces in Coder's code-server. The app illustrates how users can create workspaces from a single Dialog box walking through template selection, configuration, and build.
+
+The app is built from scratch using reference from the code-server UI and Github repo.
+
 ### Instructions
 
 Pull it:
@@ -51,16 +59,17 @@ The Wizard keeps the user informed about the stages of creating a workspace with
 - Stay on Workspaces or go to new Workspace after completion
 - New workspace displays in Workspaces view after creation
 
-### Technical things included
+### Tech
 
+- React (CRA) and Typescript
+- Sass/Dart, CSS Variables
 - Material UI components and theme
-- CSS Variables and MUI support via experimental CssVarsProvider
+- MUI experimental CssVarsProvider
 - Figma variables and tokens
 - Custom theming
 - React Router
-- Recreation of App Bar, Templates Table, and Workspaces
 - Custom Hooks
-- Dialog Box Wizard
+- Dialog Box
 - Transitions and Animation
 
 ### Things I didn't get to or would do
