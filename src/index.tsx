@@ -1,21 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
-import theme from './theme';
 import App from './App';
 import './styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/**
-     * defaultMode sets the 'mui-mode' in localStorage and adds the data attr to the HTML tag.
-     * But in dev, it doesn't reset the localStorage if it's changed here.
-     * As a backup the data attr is also used in App.
-    */}
-    <CssVarsProvider theme={theme} defaultMode='dark'>
-      <App />
-     </CssVarsProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

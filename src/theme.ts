@@ -1,3 +1,4 @@
+import { PaletteMode } from "@mui/material";
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
 // A custom theme for this app
@@ -24,8 +25,10 @@ const theme = extendTheme({
   colorSchemes: {
     dark: {
       palette: {
+        mode: "dark" as PaletteMode,
         action: {
           active: "var(--color-emphasis)",
+          activeChannel: "var(--color-emphasis-channel)",
           activatedOpacity: .7
         },
         neutral: {
@@ -34,16 +37,18 @@ const theme = extendTheme({
         },
         background: {
           default: "var(--color-paper-100)",
+          defaultChannel: "var(--color-paper-100-channel)",
           paper: "var(--color-paper-200)",
-          paperLight: "var(--color-paper-300)",
-          defaultChannel: "255 255 255"
+          paperLight: "var(--color-paper-300)"
         },
         border: {
           main: "var(--border-100)"
         },
         text: {
           primary: "var(--color-ink-100)",
-          secondary: "var(--color-ink-200)"
+          secondary: "var(--color-ink-200)",
+          primaryChannel: "var(--color-paper-100-channel)",
+          secondaryChannel: "var(--color-paper-200-channel)"
         },
         Button: {
           inheritContainedBg: "var(--color-emphasis)"

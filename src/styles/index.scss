@@ -1,43 +1,57 @@
+@use "sass:color";
 @use "sass:meta";
 @use "variables" as vars;
 @use "primitives" as p;
 
+/**
+* Converts a Hex color to space-seperated RGB.
+* For use with channel properties in MUI theme.
+*/
+
+@function hexToChannels($color) {
+  @return "#{red($color)} #{green($color)} #{blue($color)}";
+}
+
 @layer reset {
-  @include meta.load-css('reset');
+  @include meta.load-css("reset");
 }
 
 @layer app {
   :root {
     --fontSize-base: #{vars.$size-base};
     --color-paper-100: #{p.$color-neutral-600};
+    --color-paper-100-channel: #{hexToChannels(p.$color-neutral-600)};
     --color-paper-200: #{p.$color-neutral-500};
+    --color-paper-200-channel: #{hexToChannels(p.$color-neutral-500)};
     --color-paper-300: #{p.$color-neutral-400};
     --color-paper-400: #{p.$color-neutral-300};
     --color-ink-100: #{p.$color-neutral-100};
     --color-ink-200: #{p.$color-neutral-200};
     --color-emphasis: #{vars.$color-emphasis};
+    --color-emphasis-channel: #{hexToChannels(vars.$color-emphasis)};
     --border-100: 1px solid #{p.$color-neutral-400};
   }
 
-  html, body, #root {
+  html,
+  body,
+  #root {
     width: 100%;
     height: 100%;
   }
-  
+
   body {
     color: var(--color-ink-100);
     background-color: var(--color-paper-100);
     font-weight: 300;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: var(--fontSize-base);
     line-height: 1.25;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
 }
-
