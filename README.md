@@ -1,4 +1,4 @@
-![coder_wizard](https://github.com/marcomo/coder-react-ui/assets/5035442/716da864-a797-426b-8e44-05389118ebd0)
+![coder_wizard](https://mdfy-git-bucket.s3.us-west-2.amazonaws.com/coder_wizard.jpg)
 
 # Coder UI
 
