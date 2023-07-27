@@ -1,4 +1,4 @@
-![coder_wizard](https://mdfy-git-bucket.s3.us-west-2.amazonaws.com/coder_wizard.jpg)
+![coder_wizard hero image](https://mdfy-git-bucket.s3.us-west-2.amazonaws.com/coder_wizard_hero.jpg)
 
 # Coder UI
 
