@@ -1,10 +1,12 @@
-# Coder Take-Home Project
-
 ![coder_wizard](https://github.com/marcomo/coder-react-ui/assets/5035442/716da864-a797-426b-8e44-05389118ebd0)
+
+# Coder UI
+
+This project was started as a take-home challenge for a Senior UX Engineer role. The goal was to make a UX improvement and demonstrate it in design and code.
 
 ## Create Workspaces Flow - Wizard
 
-This project is a POC of an alternative workflow for creating workspaces in Coder's code-server. The app illustrates how users can create workspaces from a single Dialog box walking through template selection, configuration, and build.
+A POC of an alternative workflow for creating workspaces in Coder's code-server. The app illustrates how users can create workspaces from a single Dialog box walking through template selection, configuration, and build.
 
 The app is built from scratch using reference from the code-server UI and Github repo.
 
